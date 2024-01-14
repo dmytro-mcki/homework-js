@@ -1,107 +1,73 @@
-//String: greeting
-{
-    let userName = prompt('Task 1: Greeting\n\nEnter your name:');
-    let greeting = 'Hello, ' + userName + '!';
-    alert(greeting);
+// Number: age
+const currentYear = new Date().getFullYear();
+
+const userAge = prompt('Введіть свій вік:');
+const birthYear = currentYear - parseInt(userAge);
+
+if (!isNaN(birthYear) && userAge !== null) {
+  alert(`Ваш рік народження: ${birthYear}`);
+} else {
+  alert('Некоректне введення. Будь ласка, введіть правильний вік.');
 }
 
-//String: gopni4ek
-{
-    let userInput = prompt('Task 2: String Manipulation\n\nEnter a string with coma :');
-    let modifiedString = userInput.split(',').join(' блін, ');
-    alert(modifiedString);
+// Number: temperature
+const celsiusTemperature = prompt('Введіть температуру в градусах Цельсія:');
+
+const celsius = parseFloat(celsiusTemperature);
+const fahrenheit = (celsius * 9/5) + 32;
+
+if (!isNaN(celsius) && celsiusTemperature !== null) {
+  alert(`Температура в градусах Фаренгейта: ${fahrenheit.toFixed(2)}`);
+} else {
+  alert('Некоректне введення. Будь ласка, введіть правильну температуру.');
 }
 
-//String: capitalize
-{
-    let str = "cANBerRa";
-    let result = str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-    console.log(result);
+// Number: divide
+
+function returnMathFloor() {
+    let num1 = parseFloat(document.getElementById("num1").value)
+    let num2 = parseFloat(document.getElementById("num2").value)
+    let divideElement = document.getElementById("divide");
+    const result = Math.floor(num1 / num2);
+    divideElement.value = result;
 }
-//String: word count
 
-    let inputString = prompt('Task 4: Word Count\n\nEnter a string:');
-    let wordsArray = inputString.split(' ');
-    let wordCount = wordsArray.length;
-    alert('Number of words: ' + wordCount);
 
-//String: credentials
-{
-    let firstName = prompt('Task 5: Full Name Processing\n\nEnter your first name:');
-    let lastName = prompt('Enter your last name:');
-    let middleName = prompt('Enter your middle name:');
-    let formattedFirstName = capitalize(firstName.trim().toLowerCase());
-    let formattedLastName = capitalize(lastName.trim().toLowerCase());
-    let formattedMiddleName = capitalize(middleName.trim().toLowerCase());
-    let fullName = `${formattedLastName} ${formattedFirstName} ${formattedMiddleName}`;
-    alert('Formatted Full Name: ' + fullName);
+// Number: currency
+const rate = 37;
+const UAH = prompt('Курс USD/UAH 37');
+let currency = alert(`${(UAH * rate).toFixed(2)} ₴`)
 
-    function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-    }
+
+// Number: RGB
+const redDecimal = parseInt(prompt('Введіть значення red (десяткова система):'));
+const greenDecimal = parseInt(prompt('Введіть значення green (десяткова система):'));
+const blueDecimal = parseInt(prompt('Введіть значення blue (десяткова система):'));
+
+const redHex = redDecimal.toString(16).padStart(2, '0');
+const greenHex = greenDecimal.toString(16).padStart(2, '0');
+const blueHex = blueDecimal.toString(16).padStart(2, '0');
+
+if (!isNaN(redDecimal) && !isNaN(greenDecimal) && !isNaN(blueDecimal)) {
+  const cssColor = `#${redHex}${greenHex}${blueHex}`;
+  alert(`CSS-колір: ${cssColor}`);
+} else {
+  alert('Некоректне введення. Будь ласка, введіть правильні значення.');
 }
-{//String: beer
-    let newStr = "Було жарко. Василь пив пиво вприкуску з креветками";
-    let newResult = newStr.split(' ').map(word => word === 'пиво' ? 'чай' : word).join(' ');
-    console.log(newResult);
-}
-{//String: no tag
-    let originalString = "якийсь текст, в якому є один тег <br /> і всяке інше";
-    let tagStartIndex = originalString.indexOf('<');
-    let tagEndIndex = originalString.indexOf('>', tagStartIndex);
 
-    if (tagStartIndex !== -1 && tagEndIndex !== -1) {
-    let stringWithoutTag = originalString.slice(0, tagStartIndex) + originalString.slice(tagEndIndex + 1);
-    console.log(stringWithoutTag);
-    } else {
-    console.log("Tag not found in the string.");
-    }
-}
-{//String: big tag
-    let originalText = "якийсь текст у якому є один тег <br /> і всяке інше";
-    let startTagIndex = originalText.indexOf('<');
-    let endTagIndex = originalText.indexOf('>', startTagIndex);
+// Number: flats
+const totalFloors = parseInt(prompt('Введіть кількість поверхів у будинку:'));
+const flatsPerFloor = parseInt(prompt('Введіть кількість квартир на поверсі:'));
+const targetFlatNumber = parseInt(prompt('Введіть номер квартири:'));
 
-    if (startTagIndex !== -1 && endTagIndex !== -1) {
-    let tagToReplace = originalText.slice(startTagIndex, endTagIndex + 1);
-    let uppercasedTag = tagToReplace.toUpperCase();
-    let modifiedText = originalText.slice(0, startTagIndex) + uppercasedTag + originalText.slice(endTagIndex + 1);
-    console.log(modifiedText);
-    } else {
-    console.log("Tag not found in the string.");
-    }
 
-}
-{//String: new line
+if (!isNaN(totalFloors) && !isNaN(flatsPerFloor) && !isNaN(targetFlatNumber)) {
+  const flatsPerEntrance = Math.ceil((totalFloors * flatsPerFloor));
 
-    let userInput = prompt('Task 9: Next Line\n\nEnter a string with \\n as the newline marker. You can include multiple lines: new line');
+  const entranceNumber = Math.ceil(targetFlatNumber / flatsPerEntrance);
+  const floorInEntrance = Math.ceil((targetFlatNumber % flatsPerEntrance) / flatsPerFloor);
 
-    if (userInput) {
-        let multiLineString = userInput.split('\\n').join('\n');
-        alert(multiLineString);
-    } else {
-        console.log("Invalid input. Please try again with a string containing '\\n' as the newline marker.");
-    }
-
-}
-{//String: youtube
-
-    const youtubeLinkRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    
-    let userTextWithYoutubeLink = prompt('Task 10: Youtube\n  \nEnter a text with a YouTube link:');
-
-    if (userTextWithYoutubeLink) {
-    let youtubeMatch = userTextWithYoutubeLink.match(youtubeLinkRegex);
-    
-    if (youtubeMatch && youtubeMatch[1]) {
-        let videoId = youtubeMatch[1];
-        let embedCode = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
-        
-        document.write(embedCode);
-    } else {
-        console.log("YouTube video link not found in the entered text.");
-    }
-    } else {
-    console.log("Invalid input. Please try again with a text containing a YouTube link.");
-    }
+  alert(`Квартира №${targetFlatNumber} знаходиться у ${entranceNumber}-му під'їзді та ${floorInEntrance}-му поверсі.`);
+} else {
+  alert('Некоректне введення. Будь ласка, введіть правильні значення.');
 }
